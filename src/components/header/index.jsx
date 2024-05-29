@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import actionTypes from '../../redux/user/action-types'
-
+import {loginUser, logOutUser} from '../../redux/user/actions'
 // Components
 import Cart from "../cart/index";
 
@@ -19,10 +18,7 @@ function Header() {
   console.log(currentUser)
 
   const hendleLoginClick = () => {
-    dispatch({
-      type: actionTypes.LOGIN,
-      payload: { name: "Julio", email: "julio100@gmail.com" }
-    })
+    dispatch(loginUser({name: "Julio", email: "julio100@gmail.com"}))
   }
 
   const handleCartClick = () => {
@@ -30,9 +26,7 @@ function Header() {
   };
 
   const handleLogoutClick = () => {
-    dispatch({
-      type: actionTypes.LOGOUT,
-    })
+    dispatch(dispatch(logOutUser(null)))
   }
 
 
