@@ -15,8 +15,6 @@ function Header() {
   const { currentUser } = useSelector((rootReducer) => rootReducer.userReducer)
   const dispatch = useDispatch()
 
-  console.log(currentUser)
-
   const hendleLoginClick = () => {
     dispatch(loginUser({name: "Julio", email: "julio100@gmail.com"}))
   }

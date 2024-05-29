@@ -8,8 +8,19 @@ const initialState = {
 const cartReducer = (state = initialState, action) =>{
     switch(action.type) {
         case CartActionTypes.ADD_PRODUCT:
+            //verificar se dentro do state tem o mesmo produto enviado pela action, se sim, armazenar na constante
+            const productIsAlreadyInCart = state.products.some((product) => product.id === action.payload.id)
+            if(productIsAlreadyInCart){
+                return{ 
+                    ...state,
+                    products: state.products.map((product) => 
+                    product.id === action.payload.id
+                ? {...product, quantity: product.quantity + 1} : product )
+                }
+            }
             return{
-                ...initialState, products: [...initialState.products, action.payload]
+                // if(state.products.lenth === 0{})
+                ...state, products: [...state.products, {...action.payload, quantity: 1}]
             }
         default:
             return state
