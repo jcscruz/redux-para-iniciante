@@ -1,11 +1,11 @@
 const initialState = {
-    currentUser: 10,
+    currentUser: null,
 }
 
 const userReducer = (state = initialState, action) => {
     if(action.type === 'user/login'){
         return {
-            ...state, currentUser: 10
+            ...state, currentUser: action.payload
         }        
     }
 
