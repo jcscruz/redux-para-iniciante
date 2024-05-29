@@ -14,6 +14,7 @@ const ProductItem = ({ product }) => {
   const handleProductClick = () => {
     dispatch(addProductToCart(product))
   }
+
   return (
     <Styles.ProductContainer>
       <Styles.ProductImage imageUrl={product.imageUrl}>
