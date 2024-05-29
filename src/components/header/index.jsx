@@ -6,6 +6,7 @@ import Cart from "../cart/index";
 
 // Styles
 import * as Styles from "./styles";
+import { selectProductsCount, selectProductsTotalPrice } from "../../redux/cart/cart.selectors";
 // import rootReducer from "../../redux/root-reducer";
 
 
@@ -13,13 +14,10 @@ function Header() {
   const [cartIsVisible, setCartIsVisible] = useState(false);
 
   const { currentUser } = useSelector((rootReducer) => rootReducer.userReducer)
-  const { products } = useSelector((rootReducer) => rootReducer.cartReducer)
 
   const dispatch = useDispatch()
 
-  const productsCount = useMemo(() => {
-    return products.reduce((acc, curr) => acc + curr.quantity, 0)
-  }, [products])
+  const productsCount = useSelector(selectProductsCount)
 
   const hendleLoginClick = () => {
     dispatch(loginUser({name: "Julio", email: "julio100@gmail.com"}))
