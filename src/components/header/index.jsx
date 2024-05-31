@@ -1,13 +1,12 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {loginUser, logOutUser} from '../../redux/user/actions'
+import { login, logout } from "../../redux/user/slice";
 // Components
 import Cart from "../cart/index";
 
 // Styles
 import * as Styles from "./styles";
-import { selectProductsCount, selectProductsTotalPrice } from "../../redux/cart/cart.selectors";
-// import rootReducer from "../../redux/root-reducer";
+import { selectProductsCount } from "../../redux/cart/cart.selectors";
 
 
 function Header() {
@@ -20,7 +19,7 @@ function Header() {
   const productsCount = useSelector(selectProductsCount)
 
   const hendleLoginClick = () => {
-    dispatch(loginUser({name: "Julio", email: "julio100@gmail.com"}))
+    dispatch(login({name: "Julio", email: "julio100@gmail.com"}))
   }
 
   const handleCartClick = () => {
@@ -28,7 +27,7 @@ function Header() {
   };
 
   const handleLogoutClick = () => {
-    dispatch(dispatch(logOutUser(null)))
+    dispatch(logout(null))
   }
 
 
